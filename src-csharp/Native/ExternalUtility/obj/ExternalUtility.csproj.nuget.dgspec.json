@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj": {}
+    "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj": {}
   },
   "projects": {
-    "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\Globals.csproj": {
+    "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\Globals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\Globals.csproj",
+        "projectUniqueName": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\Globals.csproj",
         "projectName": "Globals",
-        "projectPath": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\Globals.csproj",
-        "packagesPath": "C:\\Users\\Exphert\\.nuget\\packages\\",
-        "outputPath": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\obj\\",
+        "projectPath": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\Globals.csproj",
+        "packagesPath": "C:\\Users\\Pavel\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Exphert\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -59,39 +66,41 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj": {
+    "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj",
+        "projectUniqueName": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj",
         "projectName": "ExternalUtility",
-        "projectPath": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj",
-        "packagesPath": "C:\\Users\\Exphert\\.nuget\\packages\\",
-        "outputPath": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Native\\ExternalUtility\\obj\\",
+        "projectPath": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Native\\ExternalUtility\\ExternalUtility.csproj",
+        "packagesPath": "C:\\Users\\Pavel\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Native\\ExternalUtility\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Exphert\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\Globals.csproj": {
-                "projectPath": "G:\\Code\\jawascript\\TAURI\\TauriCS\\src-csharp\\Globals\\Globals.csproj"
+              "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\Globals.csproj": {
+                "projectPath": "c:\\Users\\Pavel\\Documents\\GitHub\\Tauri-.NET-Native-AOT\\src-csharp\\Globals\\Globals.csproj"
               }
             }
           }
@@ -106,7 +115,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -115,13 +124,13 @@
             "Microsoft.DotNet.ILCompiler": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.7, )",
+              "version": "[9.0.12, )",
               "autoReferenced": true
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.7, )",
+              "version": "[9.0.12, )",
               "autoReferenced": true
             }
           },
@@ -138,20 +147,8 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
-            },
-            {
               "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.12, 9.0.12]"
             }
           ],
           "frameworkReferences": {
@@ -159,12 +156,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

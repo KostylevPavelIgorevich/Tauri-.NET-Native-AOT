@@ -62,7 +62,8 @@ public static class NativeLoader
     /// <param name="libraryName">The name of the DLL file (e.g., "ExternalUtility.dll").</param>
     /// <param name="functionName">The name of the function to load from the DLL.</param>
     /// <returns>A callable delegate of type T.</returns>
-    public static T LoadFunction<T>(string libraryName, string functionName) where T : Delegate
+    public static T LoadFunction<T>(string libraryName, string functionName)
+        where T : Delegate
     {
         // Ensure the library name ends with .dll for consistency.
         if (!libraryName.EndsWith(".dll"))
@@ -90,7 +91,6 @@ public static class NativeLoader
     }
 }
 
-
 /// <summary>
 /// Provides security-related functions, such as verifying the integrity of the host process.
 /// </summary>
@@ -102,20 +102,27 @@ public static class Security
     /// </summary>
     /// <param name="allowedProcessNames">An array of allowed executable filenames (e.g., ["taurics.exe"]).</param>
     /// <returns>A tuple containing the verification result and the detected host process name.</returns>
-    public static (bool IsVerified, string DetectedProcessName) VerifyCurrentProcess(string[] allowedProcessNames)
+    public static (bool IsVerified, string DetectedProcessName) VerifyCurrentProcess(
+        string[] allowedProcessNames
+    )
     {
         try
         {
             var currentProcess = Process.GetCurrentProcess();
             // Ensure we always have the .exe for consistent comparison
-            var currentProcessName = currentProcess.ProcessName.EndsWith(".exe") ? currentProcess.ProcessName : currentProcess.ProcessName + ".exe";
+            var currentProcessName = currentProcess.ProcessName.EndsWith(".exe")
+                ? currentProcess.ProcessName
+                : currentProcess.ProcessName + ".exe";
 
             // ** DEBUGGING LINE **
             // This will print the detected host process name to the console every time a check is made.
-            Console.WriteLine($"[Security] Verifying current process. Detected: '{currentProcessName}'");
+            Console.WriteLine(
+                $"[Security] Verifying current process. Detected: '{currentProcessName}'"
+            );
 
             bool isAllowed = allowedProcessNames.Any(allowedName =>
-                string.Equals(currentProcessName, allowedName, StringComparison.OrdinalIgnoreCase));
+                string.Equals(currentProcessName, allowedName, StringComparison.OrdinalIgnoreCase)
+            );
 
             return (isAllowed, currentProcessName);
         }

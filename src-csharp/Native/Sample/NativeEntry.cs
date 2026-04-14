@@ -10,7 +10,8 @@ namespace Sample;
 /// <summary>
 /// Defines the data structure for standard and external call responses.
 /// </summary>
-public class StandardResponse {
+public class StandardResponse
+{
     public object? ReceivedData { get; set; }
     public string? MessageFromGlobals { get; set; }
     public string? ResponseType { get; set; }
@@ -62,7 +63,9 @@ public static class NativeEntry
         if (!isVerified)
         {
             string errorMsg = $"Security check failed: Unauthorized host process '{processName}'.";
-            return Marshal.StringToCoTaskMemUTF8("{\"Error\":\"" + JsonEncodedText.Encode(errorMsg) + "\"}");
+            return Marshal.StringToCoTaskMemUTF8(
+                "{\"Error\":\"" + JsonEncodedText.Encode(errorMsg) + "\"}"
+            );
         }
 
         try
@@ -70,13 +73,17 @@ public static class NativeEntry
             var inputJson = Marshal.PtrToStringUTF8(jsonDataPtr)!;
             string sharedMessage = Shared.GetGlobalMessage();
 
-            var outputObject = new StandardResponse {
+            var outputObject = new StandardResponse
+            {
                 ReceivedData = inputJson,
                 MessageFromGlobals = sharedMessage,
-                ResponseType = "Single Request-Response"
+                ResponseType = "Single Request-Response",
             };
 
-            var outputJson = JsonSerializer.Serialize(outputObject, NativeJsonContext.Default.StandardResponse);
+            var outputJson = JsonSerializer.Serialize(
+                outputObject,
+                NativeJsonContext.Default.StandardResponse
+            );
             return Marshal.StringToCoTaskMemUTF8(outputJson);
         }
         catch (Exception ex)
@@ -90,13 +97,19 @@ public static class NativeEntry
     [UnmanagedCallersOnly(EntryPoint = "execute_streaming")]
     public static void ExecuteStreaming(IntPtr jsonDataPtr, IntPtr progressCallbackPtr)
     {
-        var progressCallback = Marshal.GetDelegateForFunctionPointer<ProgressCallback>(progressCallbackPtr);
+        var progressCallback = Marshal.GetDelegateForFunctionPointer<ProgressCallback>(
+            progressCallbackPtr
+        );
 
         // ** SECURITY CHECK **
         var (isVerified, processName) = Security.VerifyCurrentProcess(ALLOWED_PROCESSES);
         if (!isVerified)
         {
-            progressCallback(Marshal.StringToCoTaskMemUTF8($"Error: Security check failed: Unauthorized host process '{processName}'."));
+            progressCallback(
+                Marshal.StringToCoTaskMemUTF8(
+                    $"Error: Security check failed: Unauthorized host process '{processName}'."
+                )
+            );
             progressCallback(Marshal.StringToCoTaskMemUTF8("__STREAM_END__"));
             return;
         }
@@ -111,8 +124,14 @@ public static class NativeEntry
             }
             progressCallback(Marshal.StringToCoTaskMemUTF8("Streaming task complete!\n"));
         }
-        catch (Exception ex) { progressCallback(Marshal.StringToCoTaskMemUTF8($"Error: {ex.Message}")); }
-        finally { progressCallback(Marshal.StringToCoTaskMemUTF8("__STREAM_END__")); }
+        catch (Exception ex)
+        {
+            progressCallback(Marshal.StringToCoTaskMemUTF8($"Error: {ex.Message}"));
+        }
+        finally
+        {
+            progressCallback(Marshal.StringToCoTaskMemUTF8("__STREAM_END__"));
+        }
     }
 
     // --- Mode 3: External DLL Call ---
@@ -124,7 +143,9 @@ public static class NativeEntry
         if (!isVerified)
         {
             string errorMsg = $"Security check failed: Unauthorized host process '{processName}'.";
-            return Marshal.StringToCoTaskMemUTF8("{\"Error\":\"" + JsonEncodedText.Encode(errorMsg) + "\"}");
+            return Marshal.StringToCoTaskMemUTF8(
+                "{\"Error\":\"" + JsonEncodedText.Encode(errorMsg) + "\"}"
+            );
         }
 
         try
@@ -133,17 +154,25 @@ public static class NativeEntry
             Random rnd = new Random();
 
             var (first, second) = (rnd.Next(1, 100), rnd.Next(1, 100));
-            var calculator = NativeLoader.LoadFunction<NativeLoader.IntCalculationFunc>("ExternalUtility.dll", "perform_calculation");
+            var calculator = NativeLoader.LoadFunction<NativeLoader.IntCalculationFunc>(
+                "ExternalUtility.dll",
+                "perform_calculation"
+            );
             int calcResult = calculator(first, second);
-            string externalResult = $"Calculation from external DLL: {first} + {second} = {calcResult}";
+            string externalResult =
+                $"Calculation from external DLL: {first} + {second} = {calcResult}";
 
-            var outputObject = new StandardResponse {
+            var outputObject = new StandardResponse
+            {
                 ReceivedData = inputJson,
                 ResponseType = "External DLL Call",
-                ExternalLibraryResult = externalResult
+                ExternalLibraryResult = externalResult,
             };
 
-            var outputJson = JsonSerializer.Serialize(outputObject, NativeJsonContext.Default.StandardResponse);
+            var outputJson = JsonSerializer.Serialize(
+                outputObject,
+                NativeJsonContext.Default.StandardResponse
+            );
             return Marshal.StringToCoTaskMemUTF8(outputJson);
         }
         catch (Exception ex)
