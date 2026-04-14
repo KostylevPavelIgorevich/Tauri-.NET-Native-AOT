@@ -4,11 +4,11 @@ const { invoke } = window.__TAURI__.core;
 const { listen } = window.__TAURI__.event;
 
 function App() {
-  const [result, setResult] = useState("");
-  const streamStartRef = useRef(0);
+  const [result, setResult] = useState<string>("");
+  const streamStartRef = useRef<number>(0);
 
   useEffect(() => {
-    let unlisten = null;
+    let unlisten: (() => void) | null = null;
 
     async function attachListener() {
       unlisten = await listen("csharp-stream", (event) => {
@@ -24,7 +24,7 @@ function App() {
       });
     }
 
-    attachListener();
+    void attachListener();
 
     return () => {
       if (unlisten) {
@@ -37,30 +37,30 @@ function App() {
     setResult("Sending regular request...");
     try {
       const payload = { requestType: "regular" };
-      const responseString = await invoke("call_backend", {
+      const responseString = await invoke<string>("call_backend", {
         nativeName: "sample",
         jsonData: JSON.stringify(payload),
       });
 
-      const responseObject = JSON.parse(responseString);
+      const responseObject = JSON.parse(responseString) as unknown;
       setResult(JSON.stringify(responseObject, null, 2));
     } catch (error) {
-      setResult(`Error: ${error}`);
+      setResult(`Error: ${String(error)}`);
     }
   };
 
   const handleExternalCall = async () => {
     setResult("Sending external call request...");
     try {
-      const responseString = await invoke("call_backend_external", {
+      const responseString = await invoke<string>("call_backend_external", {
         nativeName: "sample",
         jsonData: JSON.stringify({ requestType: "external" }),
       });
 
-      const responseObject = JSON.parse(responseString);
+      const responseObject = JSON.parse(responseString) as unknown;
       setResult(JSON.stringify(responseObject, null, 2));
     } catch (error) {
-      setResult(`Error: ${error}`);
+      setResult(`Error: ${String(error)}`);
     }
   };
 
@@ -69,11 +69,11 @@ function App() {
     streamStartRef.current = Date.now();
 
     const payload = { requestType: "streaming" };
-    invoke("start_streaming_task", {
+    void invoke("start_streaming_task", {
       nativeName: "sample",
       jsonData: JSON.stringify(payload),
     }).catch((error) => {
-      setResult(`Error starting task: ${error}`);
+      setResult(`Error starting task: ${String(error)}`);
     });
   };
 
