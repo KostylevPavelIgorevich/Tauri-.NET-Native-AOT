@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .NET and native build artifacts
+**/obj/
+**/bin/
+natives/*.dll
+src-tauri/natives/*.dll
